@@ -2,10 +2,12 @@ package com.platzi.market.persistence;
 
 import com.platzi.market.persistence.crud.ProductoCrudRepository;
 import com.platzi.market.persistence.entity.Producto;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository //Indica que es la clase que se encarga de interactuar con la BD, asi tambien se puede usar @Component pero es mas generalizado
 public class ProductoRepository {
     private ProductoCrudRepository productoCrudRepository;
 
@@ -20,4 +22,17 @@ public class ProductoRepository {
     public Optional<List<Producto>> getEscasos(int cantidad){
         return productoCrudRepository.findByCantidadStockLessThanAndEstado(cantidad, true);
     }
+
+    public Optional<Producto> getProducto (int idProducto){
+        return productoCrudRepository.findById(idProducto);
+    }
+
+    public Producto save(Producto producto){
+        return productoCrudRepository.save(producto);
+    }
+
+    public void delete(int idProducto){
+        productoCrudRepository.deleteById(idProducto);
+    }
+
 }

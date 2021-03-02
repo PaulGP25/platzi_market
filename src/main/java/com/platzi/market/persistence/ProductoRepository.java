@@ -16,6 +16,7 @@ public class ProductoRepository implements ProductRepository { //Se implementan 
 
     @Autowired //Objetos que reciban esta anotacion se le ceden el control para que cree las instancias
     private ProductoCrudRepository productoCrudRepository;
+
     @Autowired
     private ProductMapper mapper; //se agrega el atributo ProductMapper para poder hacer la convierte el Producto a Product
 

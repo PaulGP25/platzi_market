@@ -7,8 +7,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+//Convierte la categoria a category
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
+    //Se usa para indicar como voy a traducir los objetos
     @Mappings({
             @Mapping(source = "idCategoria", target = "categoryId"),
             @Mapping(source = "descripcion", target = "category"),
@@ -16,6 +18,7 @@ public interface CategoryMapper {
     })
     Category toCategory(Categoria categoria);
 
+    //indica a mappstruct que es lo inverso a la conversión
     @InheritInverseConfiguration
     @Mapping(target = "productos", ignore = true) //indica que productos no va ir en nuestro mapeo con relacion a la clase
     Categoria toCategoria(Category category);
